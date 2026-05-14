@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar salas – Genion</title>
+    <link rel="stylesheet" href="EstiloPagina.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Reservas Genion</h1>
+    <p>Gestiona tus comidas semanales directamente en tu calendario</p>
+  </header>
+
+  <div class="session-bar">
+    <button id="btn-login" class="btn-session">Iniciar sesión con Google</button>
+    <button id="btn-logout" class="btn-session logout" style="display:none;">Cerrar sesión</button>
+  </div>
+
+  <div id="calendar-content" style="display:none;">
+    <p>Elige tu plato, día y turno — crearemos la reserva en tu Google Calendar durante las próximas 4 semanas.</p>
+
+    <div class="main-wrapper">
+
+      <!-- Formulario -->
+      <div class="card reserva-form-box">
+        <h3>Nueva reserva semanal</h3>
+
+        <label for="reserva-plato">Plato</label>
+        <select id="reserva-plato">
+          <option value="">— Elige un plato —</option>
+          <option value="Paella Valenciana">Paella Valenciana</option>
+          <option value="Cocido Madrileño">Cocido Madrileño</option>
+          <option value="Gazpacho Andaluz">Gazpacho Andaluz</option>
+          <option value="Tortilla de Patatas">Tortilla de Patatas</option>
+          <option value="Fabada Asturiana">Fabada Asturiana</option>
+        </select>
+
+        <label for="reserva-dia">Día de la semana</label>
+        <select id="reserva-dia">
+          <option value="">— Elige un día —</option>
+          <option value="MO">Lunes</option>
+          <option value="TU">Martes</option>
+          <option value="WE">Miércoles</option>
+          <option value="TH">Jueves</option>
+          <option value="FR">Viernes</option>
+          <option value="SA">Sábado</option>
+          <option value="SU">Domingo</option>
+        </select>
+
+        <label for="reserva-turno">Turno</label>
+        <select id="reserva-turno">
+          <option value="">— Elige un turno —</option>
+          <option value="desayuno">☕ Desayuno (8:00 - 10:00)</option>
+          <option value="almuerzo">🥐 Almuerzo (10:30 - 12:00)</option>
+          <option value="comida">🍽️ Comida (14:00 - 16:00)</option>
+          <option value="merienda">🍰 Merienda (17:00 - 19:00)</option>
+          <option value="cena">🌙 Cena (21:00 - 23:00)</option>
+        </select>
+
+        <button id="btn-reservar" class="btn btn-primary">Crear reserva</button>
+        <button id="btn-cancelar-todas" class="btn btn-danger">🗑 Cancelar todas las reservas</button>
+      </div>
+
+      <!-- Lista -->
+      <div class="card cal-wrapper">
+        <h3>Próximas reservas</h3>
+        <div id="lista-eventos"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
+  <script src="ScriptPagina.js"></script>
+</body>
+</html>
