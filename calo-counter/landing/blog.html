@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Recetas - Calo-Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="menu-navegacion">
+        <ul class="lista-menu">
+            <li><a href="blog.html"        class="enlace-menu">Blog</a></li>
+            <li><a href="calendario.html" class="enlace-menu">Calendario</a></li>
+            <li><a href="aplicativo.html" class="enlace-menu">Calculadora</a></li>
+            <li><a href="perfil.html"     class="enlace-menu">Mi Perfil</a></li>
+        </ul>
+    </nav>
+
+    <div class="layout-principal">
+
+        <div class="tarjeta">
+            <h2>Nueva Receta</h2>
+
+            <form id="formNuevaReceta" class="formulario-receta">
+
+                <label for="inputNombre">Nombre de la receta</label>
+                <input
+                    type="text"
+                    id="inputNombre"
+                    placeholder="Ej: Ensalada mediterránea"
+                    required
+                >
+
+                <label for="inputCalorias">Calorías (kcal)</label>
+                <input
+                    type="number"
+                    id="inputCalorias"
+                    placeholder="Ej: 350"
+                    min="1"
+                    required
+                >
+
+                <label for="inputDescripcion">Descripción corta</label>
+                <textarea
+                    id="inputDescripcion"
+                    placeholder="¿Qué lleva? ¿Cómo se prepara?"
+                    required
+                ></textarea>
+
+                <button type="submit" class="boton-principal">
+                    Publicar Receta
+                </button>
+
+            </form>
+        </div>
+
+        <div class="zona-recetas">
+            <h2>Recetas Publicadas</h2>
+
+            <p class="contador-recetas" id="contadorTexto">
+                Cargando recetas...
+            </p>
+
+            <div id="listaRecetas"></div>
+        </div>
+
+    </div>
+
+    <script>
+        var listaRecetas = [];
+
+        function cargarRecetasDeStorage() {
+            var datosGuardados = localStorage.getItem('recetasBlog');
+            if (datosGuardados) {
+                listaRecetas = JSON.parse(datosGuardados);
+            } else {
+                listaRecetas = [];
+            }
+        }
+
+        function guardarRecetasEnStorage() {
+            localStorage.setItem('recetasBlog', JSON.stringify(listaRecetas));
+        }
+
+        function actualizarContador() {
+            var contadorTexto = document.getElementById('contadorTexto');
+            var total = listaRecetas.length;
+
+            if (total === 0) {
+                contadorTexto.innerHTML = 'Aún no hay recetas publicadas.';
+            } else if (total === 1) {
+                contadorTexto.innerHTML = '<strong>1</strong> receta publicada';
+            } else {
+                contadorTexto.innerHTML = '<strong>' + total + '</strong> recetas publicadas';
+            }
+        }
+
+        function mostrarRecetas() {
+            var contenedor = document.getElementById('listaRecetas');
+            contenedor.innerHTML = '';
+
+            if (listaRecetas.length === 0) {
+                contenedor.innerHTML = `
+                    <div class="mensaje-vacio">
+                        <span></span>
+                        ¡Sé el primero en publicar una receta!
+                    </div>
+                `;
+                actualizarContador();
+                return;
+            }
+
+            listaRecetas.forEach(function(receta, i) {
+                var tarjeta = document.createElement('div');
+                tarjeta.classList.add('tarjeta-receta');
+
+                tarjeta.innerHTML = `
+                    <div class="receta-cabecera">
+                        <span class="receta-nombre">${receta.nombre}</span>
+                        <span class="badge-calorias">${receta.calorias} kcal</span>
+                    </div>
+                    <p class="receta-descripcion">${receta.descripcion}</p>
+                    <button class="boton-eliminar" onclick="eliminarReceta(${i})">
+                        Eliminar
+                    </button>
+                `;
+
+                contenedor.appendChild(tarjeta);
+            });
+
+            actualizarContador();
+        }
+
+        function eliminarReceta(indice) {
+            var confirmar = confirm('¿Seguro que quieres eliminar esta receta?');
+
+            if (confirmar) {
+                listaRecetas.splice(indice, 1);
+                guardarRecetasEnStorage();
+                mostrarRecetas();
+            }
+        }
+
+        document.getElementById('formNuevaReceta').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var nombre      = document.getElementById('inputNombre').value.trim();
+            var calorias    = document.getElementById('inputCalorias').value;
+            var descripcion = document.getElementById('inputDescripcion').value.trim();
+
+            var nuevaReceta = {
+                nombre:      nombre,
+                calorias:    parseInt(calorias),
+                descripcion: descripcion
+            };
+
+            listaRecetas.unshift(nuevaReceta);
+            guardarRecetasEnStorage();
+            mostrarRecetas();
+            document.getElementById('formNuevaReceta').reset();
+        });
+
+        cargarRecetasDeStorage();
+        mostrarRecetas();
+    </script>
+
+</body>
+</html>

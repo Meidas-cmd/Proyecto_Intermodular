@@ -1,0 +1,290 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+  --crema:       #F5F5F5;
+  --crema-dark:  #E8E8EC;
+  --terracota:   #FF5722;
+  --terracota-light: #FFCCBC;
+  --terracota-dark:  #E64A19;
+  --oliva:       #1A1C2E;
+  --oliva-light: #3D4060;
+  --texto:       #1A1C2E;
+  --texto-suave: #6B6B80;
+  --borde:       #D8D8E0;
+  --radio:       10px;
+  --radio-lg:    16px;
+  --sombra:      0 2px 12px rgba(26,28,46,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--crema);
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+
+.page-header {
+  background-color: var(--oliva);
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--crema);
+  letter-spacing: 0.01em;
+}
+
+.page-header p {
+  color: var(--oliva-light);
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.main-wrapper {
+  max-width: 860px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .main-wrapper { grid-template-columns: 1fr; }
+}
+
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-lg);
+  padding: 1.75rem;
+  box-shadow: var(--sombra);
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--texto);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--crema-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--terracota);
+  border-radius: 2px;
+}
+
+
+.reserva-form-box label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+  margin-bottom: 5px;
+  margin-top: 1rem;
+}
+
+.reserva-form-box label:first-of-type { margin-top: 0; }
+
+.reserva-form-box select,
+.reserva-form-box input[type="text"],
+.reserva-form-box input[type="date"],
+.reserva-form-box input[type="time"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--crema);
+  color: var(--texto);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reserva-form-box select:focus,
+.reserva-form-box input:focus {
+  outline: none;
+  border-color: var(--terracota);
+  box-shadow: 0 0 0 3px rgba(196,98,45,0.12);
+}
+
+.reserva-form-box select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7268' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 11px 20px;
+  margin-top: 1.25rem;
+  border: none;
+  border-radius: var(--radio);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--terracota);
+  color: #fff;
+}
+
+.btn-primary:hover { background: var(--terracota-dark); }
+
+.btn-danger {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+  margin-top: 0.75rem;
+}
+
+.btn-danger:hover { background: #FEE2E2; }
+
+
+.session-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.btn-session {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 1px solid var(--borde);
+  background: #fff;
+  color: var(--texto);
+}
+
+.btn-session:hover { background: var(--crema-dark); }
+
+.btn-session.logout {
+  background: var(--crema-dark);
+  color: var(--texto-suave);
+}
+
+.cal-wrapper h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--crema-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cal-wrapper h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--oliva);
+  border-radius: 2px;
+}
+
+.evento-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: var(--crema);
+  margin-bottom: 8px;
+  transition: border-color 0.2s;
+}
+
+.evento-item:hover { border-color: var(--oliva-light); }
+
+.evento-item strong {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--texto);
+}
+
+.evento-item span {
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.btn-borrar {
+  align-self: flex-end;
+  margin-top: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  background: none;
+  border: 1px solid var(--terracota-light);
+  color: var(--terracota-dark);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-borrar:hover {
+  background: #FEF2F2;
+}
+
+
+#lista-eventos p {
+  font-size: 14px;
+  color: var(--texto-suave);
+  text-align: center;
+  padding: 1.5rem 0;
+  font-style: italic;
+}
+
+
+#calendar-content > p {
+  font-size: 14px;
+  color: var(--texto-suave);
+  max-width: 860px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1.5rem;
+}

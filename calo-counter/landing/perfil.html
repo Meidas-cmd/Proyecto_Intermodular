@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Perfil - Calo-Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="menu-navegacion">
+        <ul class="lista-menu">
+            <li><a href="blog.html"        class="enlace-menu">Blog</a></li>
+            <li><a href="calendario.html" class="enlace-menu">Calendario</a></li>
+            <li><a href="aplicativo.html" class="enlace-menu">Calculadora</a></li>
+            <li><a href="perfil.html"     class="enlace-menu">Mi Perfil</a></li>
+        </ul>
+    </nav>
+    <div class="pagina-centrada "> 
+    <div class="contenedor">
+        <div class="tarjeta-formulario">
+            <h2 style="color: #1A1C2E;">Mi Perfil</h2>
+            <div style="text-align: left; margin: 20px 0; color: #333;">
+                <p><strong>Nombre:</strong> <span id="verNombre"></span></p>
+                <p><strong>Email:</strong> <span id="verEmail"></span></p>
+                <p><strong>Teléfono:</strong> <span id="verTel"></span></p>
+                <p><strong>Peso:</strong> <span id="verPeso"></span> kg</p>
+                <p><strong>Altura:</strong> <span id="verAltura"></span> cm</p>
+            </div>
+            <button onclick="window.location.href='aplicativo.html'" class="boton-principal">Ir al Aplicativo</button>
+            <br><br>
+            <a href="index.html" style="color: #673AB7; text-decoration: none;">Cerrar Sesión</a>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Calo-Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pagina-centrada">
+    <div class="contenedor">
+        <div class="tarjeta-formulario">
+            <img src="logo.png" alt="Calo-Counter Logo" class="logo" style="width: 50%; height: 70%;">
+            <h2>Crea tu cuenta</h2>
+            <p>Introduce tus datos para empezar.</p>
+            
+            <form id="formRegistro">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="tel" id="telefono" placeholder="Teléfono" required>
+                
+                <div class="fila">
+                    <input type="number" id="peso" placeholder="Peso (kg)" required>
+                    <input type="number" id="altura" placeholder="Altura (cm)" required>
+                </div>
+
+                <input type="password" id="password" placeholder="Contraseña" required>
+                
+                <button type="submit" class="boton-principal">Registrarse</button>
+            </form>
+            
+            <div class="texto-pie">
+                ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+
+    <script src="script.js"></script>
+</body>
+</html>

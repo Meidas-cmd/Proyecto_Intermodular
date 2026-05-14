@@ -1,0 +1,241 @@
+:root {
+    --naranja: #FF5722;
+    --naranja-dark: #E64A19;
+    --azul-oscuro: #1A1C2E;
+    --fondo-gris: #F4F7F6;
+    --blanco: #FFFFFF;
+    --gris-texto: #666666;
+    --gris-borde: #dddddd;
+    --violeta: #673AB7;
+    --sombra: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-gris);
+    color: var(--azul-oscuro);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+}
+
+h2 {
+    color: var(--azul-oscuro);
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--gris-texto);
+    font-size: 0.9rem;
+}
+
+a {
+    color: var(--violeta);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.seccion-inicio { 
+    text-align: center; 
+    max-width: 600px; 
+    background: white; 
+    padding: 50px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.botones-grupo { 
+    display: flex; 
+    gap: 20px; 
+    margin-top: 30px; }
+.secundario { 
+    background-color: #1A1C2E; 
+    color: white; 
+    padding: 12px 25px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    flex: 1; }
+.principal-link { 
+    background-color: #FF5722; 
+    color: white; 
+    padding: 12px 25px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    flex: 1; }
+
+.pagina-centrada {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.layout-principal {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 30px;
+    align-items: start;
+    padding: 0 20px;
+}
+
+.menu-navegacion {
+    background-color: var(--azul-oscuro);
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 5%;
+}
+
+.lista-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.enlace-menu {
+    display: block;
+    padding: 14px 18px;
+    color: var(--blanco);
+    font-size: 0.95rem;
+    border-bottom: 3px solid transparent;
+}
+
+.enlace-menu:hover {
+    color: var(--naranja);
+    border-bottom-color: var(--naranja);
+    text-decoration: none;
+}
+
+.cabecera {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.cabecera img {
+    width: 70px;
+    margin-bottom: 12px;
+}
+
+.cabecera h1 {
+    font-size: 2rem;
+}
+
+.cabecera h1 span {
+    color: var(--naranja);
+}
+
+.tarjeta, .tarjeta-formulario {
+    background-color: var(--blanco);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-formulario {
+    padding: 40px;
+    text-align: center;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.25s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--naranja);
+}
+
+.boton-principal {
+    width: 100%;
+    padding: 13px;
+    background-color: var(--naranja);
+    color: var(--blanco);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.boton-principal:hover {
+    background-color: var(--naranja-dark);
+}
+
+.tarjeta-receta {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-bottom: 18px;
+    animation: aparecer 0.35s ease forwards;
+}
+
+.badge-calorias {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.boton-eliminar {
+    background: none;
+    border: 1px solid #ffccbc;
+    color: var(--naranja);
+    padding: 5px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.boton-eliminar:hover {
+    background-color: var(--naranja);
+    color: var(--blanco);
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+    .layout-principal {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .enlace-menu {
+        font-size: 0.85rem;
+        padding: 11px 12px;
+    }
+}
