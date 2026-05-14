@@ -70,9 +70,7 @@ document.getElementById("btn-logout").onclick = () => {
     document.getElementById("lista-eventos").innerHTML = "";
 };
 
-// ===============================
-// OBTENER EVENTOS
-// ===============================
+
 async function obtenerEventos() {
     try {
         const response = await gapi.client.calendar.events.list({
