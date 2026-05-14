@@ -1,0 +1,43 @@
+# =====================
+#  Sistema operativo (Imprescindible para equipos mixtos)
+# =====================
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+*~
+
+# =====================
+#  Editores de código
+# =====================
+.vscode/
+*.code-workspace
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# =====================
+#  Bases de Datos (SQL Server)
+# =====================
+
+*.bak
+*.mdf
+*.ldf
+
+# =====================
+#  Node.js / Herramientas de JS (Por si acaso)
+# =====================
+node_modules/
+npm-debug.log*
+
+
+# =====================
+#  Archivos temporales y de oficina
+# =====================
+*.tmp
+*.log
+*.cache
+~$*.docx
+~$*.xlsx
