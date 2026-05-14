@@ -1,10 +1,10 @@
-# 🥗 Calo-Counter
+#  Calo-Counter
 
 Aplicación web para controlar calorías diarias y gestionar recetas saludables. Proyecto intermodular desarrollado en 1º DAM.
 
 ---
 
-## 📋 ¿Qué hace este proyecto?
+##  ¿Qué hace este proyecto?
 
 Calo-Counter es una aplicación web que permite a los usuarios:
 
@@ -15,7 +15,7 @@ Calo-Counter es una aplicación web que permite a los usuarios:
 
 ---
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 calo-counter/
@@ -36,7 +36,7 @@ calo-counter/
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+##  Tecnologías utilizadas
 
 | Tecnología | Para qué se usa |
 |---|---|
@@ -47,7 +47,7 @@ calo-counter/
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+##  Cómo ejecutar el proyecto
 
 1. **Clona el repositorio:**
    ```bash
@@ -63,12 +63,12 @@ calo-counter/
 
 ---
 
-## 👥 Autores
+##  Autores
 
 Proyecto desarrollado por alumnos Christian Madueño, Gabriel Tortosa, Manuel Pastor, Kevin Muñoz y Jorge Cuartero de **1º DAM** como proyecto intermodular.
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE.md) para más información.
