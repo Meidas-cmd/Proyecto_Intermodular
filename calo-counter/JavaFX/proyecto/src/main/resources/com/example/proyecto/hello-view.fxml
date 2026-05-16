@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.calorieapp.HelloController"
+            prefWidth="900" prefHeight="650">
+
+  <top>
+    <VBox style="-fx-background-color: #2E7D32; -fx-padding: 12;">
+      <Label text="🥗 CalorieApp"
+             style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
+      <Label text="Contador de Calorías y Recetas"
+             style="-fx-font-size: 12; -fx-text-fill: #C8E6C9;"/>
+    </VBox>
+  </top>
+
+  <center>
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+
+      <Tab text="📊 Contador Diario">
+        <VBox spacing="12" style="-fx-padding: 15;">
+
+          <TitledPane text="Añadir Alimento" expanded="true" collapsible="false">
+            <GridPane hgap="10" vgap="8">
+              <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+              <Label text="Alimento:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+              <TextField fx:id="tfAlimento" promptText="Ej: Arroz blanco"
+                         GridPane.rowIndex="0" GridPane.columnIndex="1"
+                         prefWidth="200"/>
+
+              <Label text="Kcal / 100g:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+              <TextField fx:id="tfCalorias" promptText="Ej: 130"
+                         GridPane.rowIndex="0" GridPane.columnIndex="3"
+                         prefWidth="100"/>
+
+              <Label text="Cantidad (g):" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+              <TextField fx:id="tfCantidad" promptText="Ej: 150"
+                         GridPane.rowIndex="0" GridPane.columnIndex="5"
+                         prefWidth="100"/>
+
+              <Button text="➕ Añadir" onAction="#onAgregarAlimento"
+                      GridPane.rowIndex="0" GridPane.columnIndex="6"
+                      style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            </GridPane>
+          </TitledPane>
+
+          <TableView fx:id="tablaAlimentos" VBox.vgrow="ALWAYS">
+            <columns>
+              <TableColumn fx:id="colAlimento" text="Alimento" prefWidth="220"/>
+              <TableColumn fx:id="colCalorias" text="Kcal/100g" prefWidth="100"/>
+              <TableColumn fx:id="colCantidad" text="Cantidad (g)" prefWidth="110"/>
+              <TableColumn fx:id="colTotal" text="Total Kcal" prefWidth="110"/>
+            </columns>
+            <placeholder><Label text="No hay alimentos registrados hoy."/></placeholder>
+          </TableView>
+
+          <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label fx:id="lblTotalCalorias" text="Total: 0 kcal"
+                   style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+            <ProgressBar fx:id="progressCalorias" progress="0"
+                         prefWidth="200" prefHeight="20"/>
+            <Label text="Meta:"/>
+            <TextField fx:id="tfMetaCalorias" text="2000" prefWidth="70"/>
+            <Button text="Actualizar meta" onAction="#onActualizarMeta"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🗑 Eliminar" onAction="#onEliminarAlimento"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            <Button text="🧹 Limpiar todo" onAction="#onLimpiarTodo"
+                    style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+          </HBox>
+
+        </VBox>
+      </Tab>
+
+      <Tab text="🍽 Recetas">
+        <SplitPane dividerPositions="0.4">
+
+          <VBox spacing="8" style="-fx-padding: 12;" minWidth="200">
+            <Label text="Recetas guardadas"
+                   style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <ListView fx:id="listaRecetas" VBox.vgrow="ALWAYS"/>
+            <HBox spacing="8">
+              <Button text="📋 Añadir al día" onAction="#onAnadirRecetaADia"
+                      style="-fx-background-color: #4CAF50; -fx-text-fill: white;"
+                      HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+              <Button text="🗑 Eliminar" onAction="#onEliminarReceta"
+                      style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+            </HBox>
+          </VBox>
+
+          <VBox spacing="10" style="-fx-padding: 12;">
+
+            <TitledPane text="Detalle de la Receta" expanded="true" collapsible="false">
+              <ScrollPane fitToWidth="true" prefHeight="160">
+                <Label fx:id="lblDetalleReceta"
+                       text="Selecciona una receta para ver los detalles."
+                       wrapText="true" prefWidth="400"/>
+              </ScrollPane>
+            </TitledPane>
+
+            <TitledPane text="➕ Nueva Receta" expanded="true" collapsible="false">
+              <GridPane hgap="10" vgap="8">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+                <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="tfNombreReceta" promptText="Nombre de la receta"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           GridPane.columnSpan="3" maxWidth="Infinity"/>
+
+                <Label text="Categoría:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbCategoria" GridPane.rowIndex="1"
+                          GridPane.columnIndex="1" prefWidth="150"/>
+
+                <Label text="Kcal totales:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <TextField fx:id="tfCaloriasReceta" promptText="Ej: 450"
+                           GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="80"/>
+
+                <Label text="Ingredientes:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="taIngredientes" promptText="Lista de ingredientes..."
+                          GridPane.rowIndex="2" GridPane.columnIndex="1"
+                          GridPane.columnSpan="3" prefHeight="70" wrapText="true"/>
+
+                <Label text="Preparación:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextArea fx:id="taPasos" promptText="Pasos de preparación..."
+                          GridPane.rowIndex="3" GridPane.columnIndex="1"
+                          GridPane.columnSpan="3" prefHeight="80" wrapText="true"/>
+
+                <Button text="💾 Guardar Receta" onAction="#onGuardarReceta"
+                        GridPane.rowIndex="4" GridPane.columnIndex="3"
+                        style="-fx-background-color: #2E7D32; -fx-text-fill: white;"/>
+              </GridPane>
+            </TitledPane>
+
+          </VBox>
+        </SplitPane>
+      </Tab>
+
+    </TabPane>
+  </center>
+
+  <bottom>
+    <Label text="CalorieApp v1.0 — Proyecto Intermodular"
+           style="-fx-padding: 6 12; -fx-text-fill: #666; -fx-font-size: 11;"/>
+  </bottom>
+
+</BorderPane>
