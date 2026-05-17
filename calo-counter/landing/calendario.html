@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar salas – Genion</title>
+    <title>Guardar comidas en google calendar</title>
     <link rel="stylesheet" href="EstiloCalendario.css">
 </head>
 <body>
 
   <header class="page-header">
-    <h1>Reservas Genion</h1>
+    <h1>Guardar comidas</h1>
     <p>Gestiona tus comidas semanales directamente en tu calendario</p>
   </header>
     <nav class="menu-navegacion">
@@ -26,13 +26,13 @@
   </div>
 
   <div id="calendar-content" style="display:none;">
-    <p>Elige tu plato, día y turno — crearemos la reserva en tu Google Calendar durante las próximas 4 semanas.</p>
+    <p>Elige tu plato, día y turno — guardaremos en tu Google Calendar durante las próximas 4 semanas.</p>
 
     <div class="main-wrapper">
 
       <!-- Formulario -->
       <div class="card reserva-form-box">
-        <h3>Nueva reserva semanal</h3>
+        <h3>Nueva comida semanal</h3>
 
         <label for="reserva-plato">Plato</label>
         <select id="reserva-plato">
@@ -66,13 +66,13 @@
           <option value="cena">🌙 Cena (21:00 - 23:00)</option>
         </select>
 
-        <button id="btn-reservar" class="btn btn-primary">Crear reserva</button>
-        <button id="btn-cancelar-todas" class="btn btn-danger">🗑 Cancelar todas las reservas</button>
+        <button id="btn-reservar" class="btn btn-primary">Guardar comida</button>
+        <button id="btn-cancelar-todas" class="btn btn-danger">🗑 Borrar todas las comidas</button>
       </div>
 
       <!-- Lista -->
       <div class="card cal-wrapper">
-        <h3>Próximas reservas</h3>
+        <h3>Próximas comidas</h3>
         <div id="lista-eventos"></div>
       </div>
 
