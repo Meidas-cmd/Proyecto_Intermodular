@@ -80,7 +80,7 @@ async function obtenerEventos() {
         lista.innerHTML = "";
 
         if (!eventos || eventos.length === 0) {
-            lista.innerHTML = "<p>No tienes comidas guardadas.</p>";
+            lista.innerHTML = "<p>No tienes reservas próximas.</p>";
             return;
         }
 
@@ -107,7 +107,7 @@ async function obtenerEventos() {
 
     } catch (err) {
         console.error("Error al obtener eventos:", err);
-        alert("Error al cargar tus comidas. Intenta de nuevo.");
+        alert("Error al cargar tus reservas. Intenta de nuevo.");
     }
 }
 
@@ -160,7 +160,7 @@ document.getElementById("btn-reservar").onclick = async () => {
 
     const evento = {
         summary: `${emoji} ${plato}`,
-        description: `Guardado de: ${plato}\nTurno: ${turno} (${inicio} - ${fin})\nDía: ${DIAS_ES[diaCode]}\nCreada desde calo-counter`,
+        description: `Reserva de: ${plato}\nTurno: ${turno} (${inicio} - ${fin})\nDía: ${DIAS_ES[diaCode]}\nCreada desde Genion`,
         start: {
             dateTime: `${fechaStr}T${inicio}:00`,
             timeZone: "Europe/Madrid",
@@ -180,7 +180,7 @@ document.getElementById("btn-reservar").onclick = async () => {
             resource: evento,
         });
 
-        alert(`✅ Comida guardada: "${plato}" los ${DIAS_ES[diaCode]} durante las próximas 4 semanas.`);
+        alert(`✅ Reserva creada: "${plato}" los ${DIAS_ES[diaCode]} durante las próximas 4 semanas.`);
 
         document.getElementById("reserva-plato").value = "";
         document.getElementById("reserva-dia").value = "";
@@ -189,14 +189,14 @@ document.getElementById("btn-reservar").onclick = async () => {
         obtenerEventos();
 
     } catch (err) {
-        console.error("Error al guardar la comida:", err);
-        alert("Error al guardar la comida. Comprueba que has iniciado sesión.");
+        console.error("Error al crear la reserva:", err);
+        alert("Error al crear la reserva. Comprueba que has iniciado sesión.");
     }
 };
 
 
 document.getElementById("btn-cancelar-todas").onclick = async () => {
-    if (!confirm("¿Seguro que quieres cancelar TODAS tus comidas de las próximas 4 semanas?")) return;
+    if (!confirm("¿Seguro que quieres cancelar TODAS tus reservas de las próximas 4 semanas?")) return;
 
     try {
         const response = await gapi.client.calendar.events.list({
@@ -212,7 +212,7 @@ document.getElementById("btn-cancelar-todas").onclick = async () => {
         const eventos = response.result.items;
 
         if (!eventos || eventos.length === 0) {
-            alert("No tienes comidas para guardar.");
+            alert("No tienes reservas para cancelar.");
             return;
         }
 
@@ -226,11 +226,11 @@ document.getElementById("btn-cancelar-todas").onclick = async () => {
 
         await Promise.all(promesas);
 
-        alert(`✅ ${eventos.length} comida(s) canceladas correctamente.`);
+        alert(`✅ ${eventos.length} reserva(s) canceladas correctamente.`);
         obtenerEventos();
 
     } catch (err) {
         console.error("Error al cancelar:", err);
-        alert("Error al borrar las comidas. Inténtalo de nuevo.");
+        alert("Error al cancelar las reservas. Inténtalo de nuevo.");
     }
 };
