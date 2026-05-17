@@ -11,13 +11,13 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/calorieapp/hello-view.fxml")
+                getClass().getResource("/com/example/proyecto/hello-view.fxml")
         );
         BorderPane root = loader.load();
 
         Scene scene = new Scene(root, 900, 650);
 
-        primaryStage.setTitle("🥗 CalorieApp — Contador de Calorías y Recetas");
+        primaryStage.setTitle("🥗 CaloCounter — Contador de Calorías y Recetas");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(550);

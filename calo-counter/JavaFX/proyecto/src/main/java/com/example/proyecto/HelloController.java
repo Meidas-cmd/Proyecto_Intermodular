@@ -221,18 +221,40 @@ public class HelloController implements Initializable {
             return;
         }
 
+        // Buscamos la receta en la lista
         recetasList.stream()
                 .filter(r -> r.getNombre().equals(seleccionada))
                 .findFirst()
                 .ifPresent(receta -> {
-                    // Añadir la receta como entrada en el contador de calorías
-                    AlimentoEntry entry = new AlimentoEntry(
-                            "🍽 " + receta.getNombre(), receta.getCalorias(), 1
-                    );
-                    alimentosList.add(entry);
-                    actualizarTotalCalorias();
-                    mostrarInfo("Añadida al día",
-                            receta.getNombre() + " (" + receta.getCalorias() + " kcal) añadida al contador.");
+                    // Pedimos la cantidad al usuario mediante un diálogo
+                    TextInputDialog dialog = new TextInputDialog("100"); // 100g por defecto
+                    dialog.setTitle("Cantidad de la receta");
+                    dialog.setHeaderText("Añadir " + receta.getNombre());
+                    dialog.setContentText("¿Cuántos gramos vas a consumir?:");
+
+                    dialog.showAndWait().ifPresent(cantidadStr -> {
+                        try {
+                            double cantidad = Double.parseDouble(cantidadStr);
+                            if (cantidad <= 0) {
+                                mostrarAlerta("Error", "La cantidad debe ser mayor que 0.");
+                                return;
+                            }
+
+                            // Añadir la receta con la cantidad elegida
+                            // Usamos las calorías de la receta como "calorías por 100g" para que el cálculo sea correcto
+                            AlimentoEntry entry = new AlimentoEntry(
+                                    "🍽 " + receta.getNombre(),
+                                    receta.getCalorias(),
+                                    cantidad
+                            );
+
+                            alimentosList.add(entry);
+                            actualizarTotalCalorias();
+
+                        } catch (NumberFormatException e) {
+                            mostrarAlerta("Error de formato", "Introduce un número válido para los gramos.");
+                        }
+                    });
                 });
     }
 
